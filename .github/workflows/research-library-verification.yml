@@ -1,0 +1,38 @@
+name: Agentic PhD Research Source Verification
+
+on:
+  push:
+    paths:
+      - resources/research/**
+      - docs/FRONTIER_RESEARCH_LIBRARY.md
+      - scripts/validate_research_library.py
+      - tests/test_research_library.py
+      - .github/workflows/research-library-verification.yml
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  research-evidence:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97
+        with:
+          python-version: "3.12"
+      - name: Validate research catalog
+        run: |
+          python scripts/validate_research_library.py
+      - name: Compile project and run entire test suite
+        run: |
+          python -m compileall -q phase1-foundations phase2-core-ml phase3-agentic-ai phase4-research phase5-agentic-upgrade labs scripts tests
+          python -m unittest discover -s tests -p 'test_*.py' -v
+      - name: Native GitHub source readback
+        run: |
+          test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
+          printf "Agentic PhD verification SHA: %s\n" "$GITHUB_SHA"
