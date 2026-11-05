@@ -5,6 +5,8 @@ Doctorate-level AI curriculum — Agentic PhD
 from typing import List, Dict
 import hashlib
 from datetime import datetime, timezone
+from pathlib import Path
+import json
 
 
 class PaperTracker:
@@ -12,6 +14,7 @@ class PaperTracker:
 
     def __init__(self):
         self.papers: List[Dict] = []
+        self.catalog_sources: List[Dict] = []
 
     def add(self, title: str, authors: List[str], venue: str, year: int, tags: List[str], url: str = ""):
         self.papers.append({
@@ -44,6 +47,50 @@ class PaperTracker:
             "year_range": (min(years), max(years)) if years else (None, None),
             "tags": list(set(t for p in relevant for t in p["tags"])),
         }
+
+    def load_frontier_library(self, path=None) -> Dict:
+        """Load the repo's source-identified, status-aware frontier catalog.
+
+        Do not replace existing paper records, create new citations, or treat
+        catalog inclusion as a completed experiment.
+        """
+        target = Path(path) if path is not None else (
+            Path(__file__).resolve().parents[2] /
+            "resources/research/frontier_sources.json"
+        )
+        raw = json.loads(target.read_text(encoding="utf-8"))
+        if raw.get("schema") != "glaciereq.agentic-phd.research-library.v1":
+            raise ValueError("Unknown source library schema")
+        sources = raw.get("sources")
+        if not isinstance(sources, list) or not sources or any(
+            not isinstance(row, dict) or
+            not all(isinstance(row.get(k), str) and row[k].strip()
+                    for k in ("id", "title", "url", "technique", "experiment",
+                              "area", "review_status", "implementation_status"))
+            for row in sources
+        ):
+            raise ValueError("Missing source provenance or technique")
+        keys = [row["id"] for row in sources]
+        if len(set(keys)) != len(keys):
+            raise ValueError("Duplicate source identifiers")
+        self.catalog_sources = [dict(row) for row in sources]
+        return {"loaded": len(keys),
+                "domains": sorted(set(x["area"] for x in sources))}
+
+    def source_by_id(self, source_id: str) -> Dict | None:
+        """Resolve exactly one study source without erasing its provenance."""
+        return next((dict(s) for s in self.catalog_sources
+                     if s["id"] == source_id), None)
+
+    def search_sources(self, query: str, *, area: str | None = None) -> List[Dict]:
+        """Retrieve actionable technique/lab instructions with source URLs."""
+        needle = query.casefold().strip()
+        if not needle:
+            return []
+        fields = ("title", "technique", "experiment", "area", "type")
+        return [dict(s) for s in self.catalog_sources
+                if (area is None or s["area"].casefold() == area.casefold())
+                and any(needle in s.get(f, "").casefold() for f in fields)]
 
     def summary(self) -> Dict:
         venues = {}
