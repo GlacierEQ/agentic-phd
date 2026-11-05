@@ -7,6 +7,8 @@ on:
       - docs/FRONTIER_RESEARCH_LIBRARY.md
       - scripts/validate_research_library.py
       - tests/test_research_library.py
+      - tests/test_frontier_tracker.py
+      - phase4-research/literature/tracker.py
       - .github/workflows/research-library-verification.yml
   pull_request:
   workflow_dispatch:
