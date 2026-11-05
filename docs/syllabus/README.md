@@ -1,0 +1,3 @@
+# usyllabus
+
+Module: `syllabus`

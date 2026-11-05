@@ -1,56 +1,134 @@
 # Agentic PhD
 
-Doctorate-level AI curriculum focused on **Agentic AI**: foundations, core ML, agentic systems, research, and dissertation.
+**Doctorate-level AI curriculum focused on Agentic AI.**
 
-## Structure
+A hierarchical, research-grade curriculum spanning mathematical foundations through dissertation defense, integrating the latest advances in large language models, autonomous agents, multi-agent systems, evaluation, alignment, and AI safety.
+
+---
+
+## Curriculum Map
 
 ```
-agentic-phd/
-├── phase1-foundations/       # Math & computational foundations
-├── phase2-core-ml/           # Core AI/ML (doctoral depth)
-├── phase3-agentic-ai/        # Agentic AI & frontier research
-├── phase4-research/          # Research & dissertation
-├── labs/                     # Hands-on labs
-└── docs/                     # Reference materials
+Agentic PhD
+│
+├── Phase 1: Mathematical & Computational Foundations
+│   ├── Linear Algebra & Geometry
+│   ├── Probability & Statistics
+│   ├── Optimization & Control
+│   ├── Information Theory
+│   └── Complexity Theory
+│
+├── Phase 2: Core AI/ML (Doctoral Depth)
+│   ├── Learning Theory (PAC, VC dimension, Rademacher)
+│   ├── Deep Learning Theory (NTK, double descent, grokking)
+│   ├── Probabilistic Graphical Models (inference, VAEs)
+│   ├── Reinforcement Learning (MDPs, policy gradients, offline RL)
+│   └── Causal Inference (do-calculus, counterfactuals)
+│
+├── Phase 3: Agentic AI & Frontier Research
+│   ├── LLM Foundations (transformers, scaling laws, interpretability)
+│   ├── Agent Architectures (ReAct, Reflexion, LATS, tool use)
+│   ├── Memory Systems (episodic, semantic, working, graph)
+│   ├── Planning & Reasoning (ToT, MCTS, HTN, PDDL)
+│   ├── Evaluation & Alignment (evals, red-teaming, RLHF/DPO)
+│   ├── Knowledge & Retrieval (RAG, GNNs, neuro-symbolic)
+│   ├── Safety & Governance (formal verification, containment)
+│   └── Multi-Agent Systems (debate, coordination, emergence)
+│
+├── Phase 4: Research & Dissertation
+│   ├── Literature Review & Paper Tracking
+│   ├── Experimentation & Reproducibility
+│   ├── Dissertation Structure & Writing
+│   ├── Qualifying Exams
+│   └── Publication Strategy
+│
+├── Labs (hands-on implementations)
+├── Docs (syllabi, reading lists, references)
+└── Resources (datasets, benchmarks, tools)
 ```
 
-## Curriculum
+---
 
-### Phase 1: Mathematical & Computational Foundations
-- Linear Algebra & Geometry (spectral theory, matrix calculus, manifolds)
-- Probability & Statistics (measure-theoretic, stochastic processes, concentration)
-- Optimization & Control (convex/non-convex, variational, optimal control)
-- Theoretical CS (complexity, distributed systems, cryptography)
-- Information Theory (entropy, mutual information, coding)
+## Phase 1: Mathematical & Computational Foundations
 
-### Phase 2: Core AI/ML (Doctoral Depth)
-- Advanced ML (PAC learning, statistical learning theory, kernel methods)
-- Deep Learning Theory (NTK, double descent, grokking, representation learning)
-- Probabilistic Graphical Models (inference, VAEs)
-- Reinforcement Learning (MDPs, policy gradients, multi-agent RL)
-- Causal Inference (structural causal models, do-calculus)
+The bedrock of PhD-level AI. Mastery, not familiarity.
 
-### Phase 3: Agentic AI & Frontier Research
-- LLM Foundations (transformers, scaling laws, interpretability)
-- Agentic Systems (tool use, planning, memory, multi-agent orchestration)
-- Evaluation & Alignment (evals, red-teaming, RLHF/DPO)
-- Knowledge & Retrieval (RAG, GNNs, neuro-symbolic)
-- AI Safety & Governance (formal verification, robustness, containment)
+| Module | Topics | Key Results |
+|---|---|---|
+| Linear Algebra | Spectral theory, matrix calculus, manifolds, tensor decompositions | Eigen-decomposition, SVD, rank |
+| Probability | Measure-theoretic probability, stochastic processes, concentration | Hoeffding, Chernoff, McDiarmid |
+| Optimization | Convex/non-convex, variational methods, optimal control, dynamic programming | Gradient descent, SGD, Adam, KKT |
+| Information Theory | Entropy, mutual information, coding theory, channel capacity | Shannon entropy, KL divergence, MI |
+| Complexity Theory | P vs NP, complexity classes, algorithmic game theory, cryptography | Big-O, NP-completeness, reductions |
 
-### Phase 4: Research & Dissertation
-1. Qualifying Exams (Year 1-2)
-2. Research Apprenticeship (1-2 semesters)
-3. Thesis Proposal (Year 2-3)
-4. Dissertation Research (Year 3-5) — 3-4 first-author papers
-5. Dissertation Defense (Year 5-6)
+## Phase 2: Core AI/ML (Doctoral Depth)
+
+Beyond application — understanding limits and mechanics of learning.
+
+| Module | Topics | Key Results |
+|---|---|---|
+| Learning Theory | PAC learning, VC dimension, Rademacher complexity, generalization bounds | Sample complexity, uniform convergence |
+| Deep Learning Theory | NTK, double descent, grokking, representation learning, equivariance | Universal approximation, grokking dynamics |
+| Graphical Models | Directed/undirected, exact/approximate inference, VAEs, normalizing flows | ELBO, variational inference, MCMC |
+| Reinforcement Learning | MDPs, policy gradients, actor-critic, offline RL, multi-agent RL | Bellman equations, PPO, SAC |
+| Causal Inference | Structural causal models, do-calculus, counterfactuals, causal discovery | ATE, backdoor adjustment, IV |
+
+## Phase 3: Agentic AI & Frontier Research
+
+The cutting edge: from static models to autonomous, reasoning systems.
+
+| Module | Topics | Key Systems |
+|---|---|---|
+| LLM Foundations | Transformers, attention, scaling laws, mechanistic interpretability | GPT, Claude, Llama, Gemini |
+| Agent Architectures | ReAct, Reflexion, LATS, tool use, planning loops | AutoGPT, BabyAGI, LangGraph |
+| Memory Systems | Episodic, semantic, working, graph memory, pointer indexing | MemGPT, Letta, Zep |
+| Planning & Reasoning | Tree of Thoughts, MCTS, HTN, PDDL, chain-of-thought | ToT, GoT, MCTS agents |
+| Evaluation & Alignment | Evals as infrastructure, red-teaming, RLHF, DPO, constitutional AI | GAIA, SWE-bench, MMLU |
+| Knowledge & Retrieval | RAG, GNNs, neuro-symbolic AI, knowledge graphs | GraphRAG, ColBERT, HyDE |
+| Safety & Governance | Formal verification, robustness, containment, prompt injection defense | Constitutional AI, guardrails |
+| Multi-Agent Systems | Debate, coordination, emergence, swarm intelligence | AutoGen, CrewAI, MetaGPT |
+
+## Phase 4: Research & Dissertation
+
+The defining feature of the PhD.
+
+1. **Literature Review** — Systematic paper tracking, gap analysis, contribution positioning
+2. **Experimentation** — Reproducible experiments, ablation studies, statistical significance
+3. **Dissertation** — 6-chapter structure, writing, defense preparation
+4. **Qualifying Exams** — Comprehensive coverage of Phases 1-3
+5. **Publication Strategy** — Venue selection, peer review, revision, impact
+
+---
 
 ## Running the Curriculum
 
 ```bash
-# Start with Phase 1
-cd phase1-foundations
-python3 foundations.py
+# Phase 1: Foundations
+python3 phase1-foundations/linear-algebra/spectral.py
+
+# Phase 2: Core ML
+python3 phase2-core-ml/learning-theory/pac.py
+
+# Phase 3: Agentic AI
+python3 phase3-agentic-ai/agent-architectures/react.py
+
+# Phase 4: Research
+python3 phase4-research/literature/tracker.py
+
+# Labs
+python3 labs/agentic/lab_react.py
 ```
+
+## Key References
+
+- **CMU ML PhD** — Statistical learning theory, robotics
+- **Georgia Tech ML PhD** — Math, optimization, ML theory
+- **ASU AI PhD** — Broad AI, human-centered
+- **MBZUAI ML PhD** — Foundation models, generative AI
+- **Stanford CS224V** — Agentic AI course
+- **DeepLearning.AI** — Agentic AI (Andrew Ng)
+- **Hugging Face** — AI Agents Course
+- **Anthropic Academy** — Claude Code, MCP, Agent Skills
 
 ## License
 
