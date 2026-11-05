@@ -24,7 +24,7 @@ Updated: 2026-11-05 UTC. Source of truth: [machine-readable research index](../r
 - **[F03] [Berkeley CS285: Deep Reinforcement Learning](https://rail.eecs.berkeley.edu/deeprlcourse/)** (course; canonical url requires live recheck).
   - **Technique:** MDPs, policy optimization, offline evaluation.
   - **Experiment:** Model the Spiral decision loop as a constrained policy.
-- **[F04] [Sutton and Barto: Reinforcement Learning](http://incompleteideas.net/book/the-book-2nd.html)** (textbook; canonical url requires live recheck).
+- **[F04] [Sutton and Barto: Reinforcement Learning](https://mitpress.mit.edu/9780262039246/reinforcement-learning/)** (textbook; canonical url requires live recheck).
   - **Technique:** Bellman equations, control, credit assignment.
   - **Experiment:** Derive value functions for near/mid/far-horizon impacts.
 - **[F05] [Direct Preference Optimization](https://arxiv.org/abs/2305.18290)** (paper; canonical url requires live recheck).
