@@ -1,0 +1,3 @@
+# udiligence
+
+Module: `diligence`

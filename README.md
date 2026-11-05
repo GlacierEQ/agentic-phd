@@ -41,6 +41,16 @@ Agentic PhD
 │   ├── Dissertation Structure & Writing
 │   ├── Qualifying Exams
 │   └── Publication Strategy
+││
+├── Phase 5: Agentic Upgrade (AI Agent Self-Enhancement)
+│   ├── Coding Reasoning (analysis, patterns, refactoring)
+│   ├── Tool Orchestration (selection, chaining, parallel, fallback)
+│   ├── Innovation Patterns (lateral thinking, cross-domain, brainstorming)
+│   ├── Error Handling (retry, circuit breaker, graceful degradation)
+│   ├── Diligence (verification, evidence, red-teaming, calibration)
+│   ├── Awareness (context budget, attention, situational summary)
+│   ├── Epistemology (Bayesian, uncertainty, confidence intervals)
+│   └── Genius Synthesis (capability matrix, thinking engine, meta-cognition)
 │
 ├── Labs (hands-on implementations)
 ├── Docs (syllabi, reading lists, references)
@@ -100,6 +110,22 @@ The defining feature of the PhD.
 
 ---
 
+## Phase 5: Agentic Upgrade (AI Agent Self-Enhancement)
+
+The capstone: knowledge that literally makes the AI agent better. Each module
+targets a specific capability dimension and provides runnable implementations.
+
+| Module | Focus | Key Capabilities |
+|---|---|---|
+| Coding Reasoning | Code analysis, pattern detection, refactoring | Cyclomatic complexity, code smells, dependency extraction |
+| Tool Orchestration | Tool selection, chaining, parallel dispatch, fallback | Relevance scoring, retry with backoff, circuit breaker |
+| Innovation Patterns | Creative problem solving, cross-domain transfer | Lateral thinking, brainstorming, innovation scoring |
+| Error Handling | Resilience, recovery, graceful degradation | Retry, circuit breaker, bulkhead, error classification |
+| Diligence | Verification, evidence, red-teaming, calibration | Evidence hashing, ECE, red-team scoring |
+| Awareness | Context management, attention, situational awareness | Context budget, priority queues, staleness detection |
+| Epistemology | Knowledge, belief, uncertainty quantification | Bayesian update, Wilson CI, evidence weighting |
+| Genius Synthesis | Unified intelligence, meta-cognition, capability tracking | Capability matrix, thinking engine, compound intelligence |
+
 ## Running the Curriculum
 
 ```bash
@@ -114,6 +140,9 @@ python3 phase3-agentic-ai/agent-architectures/react.py
 
 # Phase 4: Research
 python3 phase4-research/literature/tracker.py
+
+# Phase 5: Agentic Upgrade
+python3 phase5-agentic-upgrade/genius-synthesis/synthesis.py
 
 # Labs
 python3 labs/agentic/lab_react.py
