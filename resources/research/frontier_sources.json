@@ -42,11 +42,11 @@
       "id": "F04",
       "area": "Foundations",
       "title": "Sutton and Barto: Reinforcement Learning",
-      "url": "http://incompleteideas.net/book/the-book-2nd.html",
+      "url": "https://mitpress.mit.edu/9780262039246/reinforcement-learning/",
       "type": "textbook",
       "technique": "Bellman equations, control, credit assignment",
       "experiment": "Derive value functions for near/mid/far-horizon impacts",
-      "review_status": "canonical_url_requires_live_recheck",
+      "review_status": "public_source_checked_2026-11-05",
       "implementation_status": "proposed_lab_not_run"
     },
     {
@@ -321,7 +321,7 @@
       "type": "benchmark",
       "technique": "Multi-step generalist assistant evaluation",
       "experiment": "Create multi-hop tool tasks with independently checked answers",
-      "review_status": "canonical_url_requires_live_recheck",
+      "review_status": "public_source_checked_2026-11-05",
       "implementation_status": "proposed_lab_not_run"
     },
     {
