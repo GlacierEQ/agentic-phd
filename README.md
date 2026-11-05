@@ -159,6 +159,34 @@ python3 labs/agentic/lab_react.py
 - **Hugging Face** — AI Agents Course
 - **Anthropic Academy** — Claude Code, MCP, Agent Skills
 
+## Frontier Research Library and verified study tools
+
+The [research and technique library](docs/FRONTIER_RESEARCH_LIBRARY.md) curates
+**40 primary/research-grade sources across seven domains**, with method summaries,
+falsifiable experiments, source-review status, and an explicit distinction
+between proposed and completed reproduction. The
+[JSON catalog](resources/research/frontier_sources.json) is the stable,
+machine-readable owner; it is not a certificate of mastery.
+
+```bash
+python3 scripts/validate_research_library.py
+python3 -m unittest discover -s tests -p 'test_*.py' -v
+```
+
+The original `phase4-research/literature/tracker.py` now supports
+`load_frontier_library()`, `search_sources(query, area=...)`, and
+`source_by_id(id)` alongside all preexisting paper-tracking methods.
+This makes experimental tasks retrievable without silently rewriting prior papers.
+The [CI workflow](.github/workflows/research-library-verification.yml)
+compiles the curriculum, verifies catalog integrity and checks against current
+GitHub source. CI green proves the listed checks, **not** paper reproduction
+or terminal doctoral-level mastery.
+
+The upstream authoritative controller for measured compound revolutions remains
+the separately owned original **GlacierEQ Spiral Engine**. Research experiments
+must produce independently checked before/after evidence before the engine can
+promote an actual skill; no second Spiral runtime is created here.
+
 ## License
 
 MIT
