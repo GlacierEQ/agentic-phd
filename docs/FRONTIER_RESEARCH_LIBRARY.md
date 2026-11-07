@@ -1,6 +1,6 @@
 # GlacierEQ Agentic PhD — Frontier Research and Technique Library
 
-Updated: 2026-11-05 UTC. Source of truth: [machine-readable research index](../resources/research/frontier_sources.json). **40 curated links across 7 domains**; verified reading of the source is not equivalent to experimentally mastering or deploying its techniques.
+Updated: 2026-11-05 UTC. Source of truth: [machine-readable research index](../resources/research/frontier_sources.json). **46 curated links across 8 domains**; verified reading of the source is not equivalent to experimentally mastering or deploying its techniques.
 
 ## Research method and evidence hierarchy
 
@@ -57,6 +57,12 @@ Updated: 2026-11-05 UTC. Source of truth: [machine-readable research index](../r
 - **[A08] [OpenAI Agents SDK and sandboxed harness](https://openai.com/index/the-next-evolution-of-the-agents-sdk/)** (engineering; public source checked 2026-11-05).
   - **Technique:** Sandboxed execution, tools, file and terminal interaction.
   - **Experiment:** Prove task outcome using workspace and environment readback.
+- **[A09] [DeepSeek-R1: Incentivizing Reasoning Capability in LLMs via Reinforcement Learning](https://arxiv.org/abs/2501.12948)** (paper; Nature 2025, revised 2026-01-04; public source checked 2026-11-05).
+  - **Technique:** Reinforcement learning can elicit reasoning strategies such as reflection and verification on verifiable tasks.
+  - **Experiment:** Compare an RL-reasoning baseline with supervised reasoning on held-out verifiable problems; measure accuracy, cost, and calibration.
+- **[A10] [Towards a Science of Scaling Agent Systems](https://arxiv.org/abs/2512.08296)** (paper; v3 2026-04-08; public source checked 2026-11-05).
+  - **Technique:** Predict architecture/task alignment using capability, sequential dependency, tool density, and coordination.
+  - **Experiment:** Compare one-agent, parallel, and task-coordinated routes on matched held-out tasks and equalized budgets.
 
 ### Memory and context
 
@@ -126,6 +132,9 @@ Updated: 2026-11-05 UTC. Source of truth: [machine-readable research index](../r
 - **[E07] [Chain-of-Verification](https://aclanthology.org/2024.findings-acl.212/)** (paper; public source checked 2026-11-05).
   - **Technique:** Independent fact-check questions before response.
   - **Experiment:** Run evidence checks on disconfirming as well as favorable claims.
+- **[E08] [Measuring AI Ability to Complete Long Software Tasks](https://arxiv.org/abs/2503.14499)** (paper; NeurIPS 2025, v4 2026-07-10; public source checked 2026-11-05).
+  - **Technique:** Estimate a task-completion time horizon from expert-timed tasks and AI success rates.
+  - **Experiment:** Measure completion probability over a declared task mix and duration range; report external-validity limits and failures.
 
 ### Safety and governance
 
@@ -153,6 +162,18 @@ Updated: 2026-11-05 UTC. Source of truth: [machine-readable research index](../r
 - **[R03] [Hugging Face Papers](https://huggingface.co/papers)** (resource; canonical url requires live recheck).
   - **Technique:** Research discovery and implementation ecosystem.
   - **Experiment:** Track dated claims, code, evaluation and deployment maturity.
+- **[R04] [AlphaEvolve: A coding agent for scientific and algorithmic discovery](https://arxiv.org/abs/2506.13131)** (research report; public source checked 2026-11-05).
+  - **Technique:** Evolutionary code search steered by one or more evaluators.
+  - **Experiment:** Compare evaluator-guided search with random and human baselines; require independent correctness checks and held-out objective tests.
+- **[R05] [The AI Scientist: Towards Fully Automated Open-Ended Scientific Discovery](https://arxiv.org/abs/2408.06292)** (paper; v3; public source checked 2026-11-05).
+  - **Technique:** Automate idea generation, implementation, experimentation, writing, and review as a research pipeline.
+  - **Experiment:** Blindly evaluate generated findings against human-reviewed baselines; independently reproduce results and audit novelty.
+
+### Embodied AI
+
+- **[B01] [Gemini Robotics: Bringing AI into the Physical World](https://arxiv.org/abs/2503.20020)** (technical report; public source checked 2026-11-05).
+  - **Technique:** Vision-language-action and embodied-reasoning models for robot perception and control.
+  - **Experiment:** Evaluate task success and safe recovery on held-out objects, environments, and embodiments before any physical deployment.
 
 ## Compounding study sequence: theory → implementation → adversarial proof
 

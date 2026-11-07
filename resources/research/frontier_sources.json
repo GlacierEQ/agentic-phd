@@ -149,6 +149,28 @@
       "implementation_status": "proposed_lab_not_run"
     },
     {
+      "id": "A09",
+      "area": "Agent architectures",
+      "title": "DeepSeek-R1: Incentivizing Reasoning Capability in LLMs via Reinforcement Learning",
+      "url": "https://arxiv.org/abs/2501.12948",
+      "type": "paper",
+      "technique": "Reinforcement learning can elicit reasoning strategies on verifiable tasks",
+      "experiment": "Compare RL-reasoning and supervised baselines on held-out verifiable problems, measuring accuracy, cost, and calibration",
+      "review_status": "public_source_checked_2026-11-05",
+      "implementation_status": "proposed_lab_not_run"
+    },
+    {
+      "id": "A10",
+      "area": "Agent architectures",
+      "title": "Towards a Science of Scaling Agent Systems",
+      "url": "https://arxiv.org/abs/2512.08296",
+      "type": "paper",
+      "technique": "Predict architecture and task alignment from capability, sequential dependency, tool density, and coordination",
+      "experiment": "Compare single-agent, parallel, and task-coordinated routes on matched held-out tasks and equalized budgets",
+      "review_status": "public_source_checked_2026-11-05",
+      "implementation_status": "proposed_lab_not_run"
+    },
+    {
       "id": "M01",
       "area": "Memory and context",
       "title": "MemGPT",
@@ -369,6 +391,17 @@
       "implementation_status": "proposed_lab_not_run"
     },
     {
+      "id": "E08",
+      "area": "Evaluation",
+      "title": "Measuring AI Ability to Complete Long Software Tasks",
+      "url": "https://arxiv.org/abs/2503.14499",
+      "type": "paper",
+      "technique": "Estimate task-completion time horizon using expert-timed tasks and AI success rates",
+      "experiment": "Measure completion probability over a declared task mix and duration range, reporting external-validity limits and failures",
+      "review_status": "public_source_checked_2026-11-05",
+      "implementation_status": "proposed_lab_not_run"
+    },
+    {
       "id": "S01",
       "area": "Safety and governance",
       "title": "AgentDojo prompt-injection benchmark",
@@ -443,6 +476,39 @@
       "technique": "Research discovery and implementation ecosystem",
       "experiment": "Track dated claims, code, evaluation and deployment maturity",
       "review_status": "canonical_url_requires_live_recheck",
+      "implementation_status": "proposed_lab_not_run"
+    },
+    {
+      "id": "R04",
+      "area": "Research practice",
+      "title": "AlphaEvolve: A coding agent for scientific and algorithmic discovery",
+      "url": "https://arxiv.org/abs/2506.13131",
+      "type": "research",
+      "technique": "Evolutionary code search steered by one or more evaluators",
+      "experiment": "Compare evaluator-guided search with random and human baselines; require independent correctness and held-out objective tests",
+      "review_status": "public_source_checked_2026-11-05",
+      "implementation_status": "proposed_lab_not_run"
+    },
+    {
+      "id": "R05",
+      "area": "Research practice",
+      "title": "The AI Scientist: Towards Fully Automated Open-Ended Scientific Discovery",
+      "url": "https://arxiv.org/abs/2408.06292",
+      "type": "paper",
+      "technique": "Automate idea generation, implementation, experimentation, writing, and review as a research pipeline",
+      "experiment": "Blindly evaluate generated findings against human-reviewed baselines; independently reproduce results and audit novelty",
+      "review_status": "public_source_checked_2026-11-05",
+      "implementation_status": "proposed_lab_not_run"
+    },
+    {
+      "id": "B01",
+      "area": "Embodied AI",
+      "title": "Gemini Robotics: Bringing AI into the Physical World",
+      "url": "https://arxiv.org/abs/2503.20020",
+      "type": "technical_report",
+      "technique": "Vision-language-action and embodied-reasoning models for robot perception and control",
+      "experiment": "Evaluate task success and safe recovery on held-out objects, environments, and embodiments before physical deployment",
+      "review_status": "public_source_checked_2026-11-05",
       "implementation_status": "proposed_lab_not_run"
     }
   ]

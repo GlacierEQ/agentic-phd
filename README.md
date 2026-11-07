@@ -110,10 +110,16 @@ The defining feature of the PhD.
 
 ---
 
-## Phase 5: Agentic Upgrade (AI Agent Self-Enhancement)
+## Phase 5: Agentic Upgrade (evidence-driven system improvement)
 
-The capstone: knowledge that literally makes the AI agent better. Each module
-targets a specific capability dimension and provides runnable implementations.
+The capstone turns research into agent-usable procedures, experiments, and
+educational implementations. Repository content can improve an agent's
+behavior when it is loaded as context or integrated into a runtime; it does
+not by itself change model weights or prove a general capability gain.
+
+Start with the [Agent Operating Playbook](docs/AGENT_OPERATING_PLAYBOOK.md) for
+an expansive, reusable operating rhythm and the [AI evolution keynote briefs](docs/KEYNOTES_AI_EVOLUTION.md)
+for the research synthesis.
 
 | Module | Focus | Key Capabilities |
 |---|---|---|
@@ -126,26 +132,32 @@ targets a specific capability dimension and provides runnable implementations.
 | Epistemology | Knowledge, belief, uncertainty quantification | Bayesian update, Wilson CI, evidence weighting |
 | Genius Synthesis | Unified intelligence, meta-cognition, capability tracking | Capability matrix, thinking engine, compound intelligence |
 
+These Python modules are educational prototypes, not production agents or
+validated measures of intelligence. In particular, a configured "synergy"
+bonus is a toy parameter, not an empirically measured capability gain.
+
 ## Running the Curriculum
+
+The project CI targets Python 3.12; use that version for the examples and test suite.
 
 ```bash
 # Phase 1: Foundations
-python3 phase1-foundations/linear-algebra/spectral.py
+python3.12 phase1-foundations/linear-algebra/spectral.py
 
 # Phase 2: Core ML
-python3 phase2-core-ml/learning-theory/pac.py
+python3.12 phase2-core-ml/learning-theory/pac.py
 
 # Phase 3: Agentic AI
-python3 phase3-agentic-ai/agent-architectures/react.py
+python3.12 phase3-agentic-ai/agent-architectures/react.py
 
 # Phase 4: Research
-python3 phase4-research/literature/tracker.py
+python3.12 phase4-research/literature/tracker.py
 
 # Phase 5: Agentic Upgrade
-python3 phase5-agentic-upgrade/genius-synthesis/synthesis.py
+python3.12 phase5-agentic-upgrade/genius-synthesis/synthesis.py
 
 # Labs
-python3 labs/agentic/lab_react.py
+python3.12 labs/agentic/lab_react.py
 ```
 
 ## Key References
@@ -162,21 +174,28 @@ python3 labs/agentic/lab_react.py
 ## Frontier Research Library and verified study tools
 
 The [research and technique library](docs/FRONTIER_RESEARCH_LIBRARY.md) curates
-**40 primary/research-grade sources across seven domains**, with method summaries,
+**46 primary/research-grade sources across eight domains**, with method summaries,
 falsifiable experiments, source-review status, and an explicit distinction
 between proposed and completed reproduction. The
 [JSON catalog](resources/research/frontier_sources.json) is the stable,
 machine-readable owner; it is not a certificate of mastery.
 
 ```bash
-python3 scripts/validate_research_library.py
-python3 -m unittest discover -s tests -p 'test_*.py' -v
+python3.12 scripts/validate_research_library.py
+python3.12 -m unittest discover -s tests -p 'test_*.py' -v
 ```
 
 The original `phase4-research/literature/tracker.py` now supports
 `load_frontier_library()`, `search_sources(query, area=...)`, and
 `source_by_id(id)` alongside all preexisting paper-tracking methods.
 This makes experimental tasks retrievable without silently rewriting prior papers.
+The tracker also exposes a JSON CLI for direct agent and shell use:
+
+```bash
+python3.12 phase4-research/literature/tracker.py search "task alignment"
+python3.12 phase4-research/literature/tracker.py show A10
+```
+
 The [CI workflow](.github/workflows/research-library-verification.yml)
 compiles the curriculum, verifies catalog integrity and checks against current
 GitHub source. CI green proves the listed checks, **not** paper reproduction

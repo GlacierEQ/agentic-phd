@@ -2,11 +2,15 @@
 Literature Review — Paper Tracking, Gap Analysis, Contribution Positioning
 Doctorate-level AI curriculum — Agentic PhD
 """
+from __future__ import annotations
+
+import argparse
 from typing import List, Dict
 import hashlib
 from datetime import datetime, timezone
 from pathlib import Path
 import json
+import sys
 
 
 class PaperTracker:
@@ -99,7 +103,51 @@ class PaperTracker:
         return {"total": len(self.papers), "venues": venues, "years": sorted(set(p["year"] for p in self.papers))}
 
 
+def source_cli(argv: List[str] | None = None) -> int:
+    """Expose the indexed research library as JSON for scripts and agents."""
+    parser = argparse.ArgumentParser(description="Search the Agentic PhD research library.")
+    commands = parser.add_subparsers(dest="command")
+    search_parser = commands.add_parser("search", help="Search source titles, techniques, and experiments.")
+    search_parser.add_argument("query")
+    search_parser.add_argument("--area")
+    show_parser = commands.add_parser("show", help="Read one source record by stable ID.")
+    show_parser.add_argument("source_id")
+    list_parser = commands.add_parser("list", help="List sources, optionally by domain.")
+    list_parser.add_argument("--area")
+    for command_parser in (search_parser, show_parser, list_parser):
+        command_parser.add_argument(
+            "--catalog",
+            type=Path,
+            help="Use a catalog JSON file other than the repository default.",
+        )
+    args = parser.parse_args(argv)
+    if not args.command:
+        parser.print_help()
+        return 2
+
+    tracker = PaperTracker()
+    tracker.load_frontier_library(args.catalog)
+    if args.command == "search":
+        result = tracker.search_sources(args.query, area=args.area)
+    elif args.command == "list":
+        result = [
+            source for source in tracker.catalog_sources
+            if args.area is None or source["area"].casefold() == args.area.casefold()
+        ]
+    else:
+        source = tracker.source_by_id(args.source_id)
+        if source is None:
+            print(f"Unknown source ID: {args.source_id}", file=sys.stderr)
+            return 1
+        result = source
+
+    print(json.dumps(result, ensure_ascii=False, indent=2, sort_keys=True))
+    return 0
+
+
 if __name__ == "__main__":
+    if len(sys.argv) > 1:
+        raise SystemExit(source_cli())
     print("=== Literature Review: Paper Tracker ===")
     tracker = PaperTracker()
     tracker.add("Attention Is All You Need", ["Vaswani et al."], "NeurIPS", 2017, ["transformers", "attention"], "https://arxiv.org/abs/1706.03762")
