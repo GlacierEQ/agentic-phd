@@ -5,35 +5,44 @@ integration under the mission control protocol.
 
 from __future__ import annotations
 
-import importlib
+import importlib.util
 import json
 import logging
 import sys
 import time
 from pathlib import Path
 
-WORKSPACE = Path("/Users/kcbflux/Workspace")
+# Resolve layout relative to this file (works wherever the workspace lives):
+# file: .../agentic-phd/phase5-agentic-upgrade/tower-integration/src/tower_integration/integrated_end_to_end.py
+# _HERE.parents[0]=src, parents[1]=tower-integration, parents[2]=phase5-agentic-upgrade,
+# parents[3]=agentic-phd root, parents[4]=projects, parents[5]=Workspace
+_HERE = Path(__file__).resolve().parent
+_TOWER_INTEGRATION_ROOT = _HERE.parents[1]
+_PHASE5_ROOT = _HERE.parents[2]
+_AGENTIC_PHD_ROOT = _HERE.parents[3]
+_WORKSPACE = _HERE.parents[5]
+_TOWER_REPO = _WORKSPACE / "tower-of-babel"
+_SEQUENTIAL_PATH = _PHASE5_ROOT / "sequential-thinking" / "sequential_reasons.py"
+_BRIDGE_PATH = _HERE / "bridge.py"
+_ASPEN_PATH = _HERE / "aspen_bridge.py"
+WORKSPACE = _WORKSPACE
+REPORT_PATH = _WORKSPACE / "tower-of-babel-integration-report.json"
 
-# Ensure the agentic-phd root is on sys.path
-agentic_phd_root = WORKSPACE / "projects" / "agentic-phd"
-sys_path = str(agentic_phd_root)
-if sys_path not in sys.path:
-    sys.path.insert(0, sys_path)
+def _load_module(name: str, path: Path):
+    spec = importlib.util.spec_from_file_location(name, path)
+    if spec is None or spec.loader is None:
+        raise ImportError(f"Cannot load {name} from: {path}")
+    mod = importlib.util.module_from_spec(spec)
+    sys.modules.setdefault(spec.name, mod)
+    spec.loader.exec_module(mod)
+    return mod
 
-# Import using importlib to handle hyphenated directory names
-# phase5-agentic-upgrade/sequential_thinking/sequential_reasons.py
-phase5_module = importlib.import_module("phase5-agentic-upgrade")
-_seq = importlib.import_module(
-    "phase5-agentic-upgrade.sequential_thinking.sequential_reasons"
-)
+_seq = _load_module("agentic_phd_sequential_reasons", _SEQUENTIAL_PATH)
 SequentialReasoner = _seq.SequentialReasoner
-
-from phase5_agentic_upgrade.tower_integration.src.tower_integration.bridge import (
-    TowerBridge,
-)
-from phase5_agentic_upgrade.tower_integration.src.tower_integration.aspen_bridge import (
-    AspenGroveBridge,
-)
+_bridge = _load_module("tower_integration_bridge", _BRIDGE_PATH)
+TowerBridge = _bridge.TowerBridge
+_aspen = _load_module("tower_integration_aspen_bridge", _ASPEN_PATH)
+AspenGroveBridge = _aspen.AspenGroveBridge
 
 logger = logging.getLogger("tower_integration")
 
@@ -138,7 +147,7 @@ def run_tower_of_babel_integration():
         "action_required": "Connect to actual aspen-grove-core repository",
         "next_protocol_step": "Verify the bridge, then run tower validate",
         "open_items": [
-            "GitHub remote URL for /Users/kcbflux/Workspace",
+            f"GitHub remote URL for {WORKSPACE}",
             "aspen-grove-core source URL confirmation",
         ],
     }

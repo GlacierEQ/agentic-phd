@@ -5,8 +5,15 @@ This module bridges:
 - The Tower of Babel (GlacierEQ/the-tower-of-babel)
 - Aspen Grove Core (memory and context continuity)
 
-Usage:
-    from phase5_agentic_upgrade.tower_integration import TowerIntegration
-    integration = TowerIntegration()
-    result = integration.integrate_sequential_reasoning()
+The directories are hyphenated and not import-safe, so load the bridge by path:
+
+    import importlib.util
+    spec = importlib.util.spec_from_file_location(
+        "tower_integration_bridge",
+        "phase5-agentic-upgrade/tower-integration/src/tower_integration/bridge.py",
+    )
+    bridge = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(bridge)
+    integration = bridge.TowerBridge()
+    result = integration.route_mission(mission="...")
 """

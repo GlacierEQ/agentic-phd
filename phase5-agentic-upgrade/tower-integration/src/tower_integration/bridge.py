@@ -14,7 +14,7 @@ Integration points:
 
 from __future__ import annotations
 
-import json
+import importlib.util
 import logging
 import sys
 from pathlib import Path
@@ -22,23 +22,46 @@ from typing import Any, Dict, List, Optional
 
 logger = logging.getLogger(__name__)
 
+_AGENTIC_PHD_ROOT = Path(__file__).resolve().parents[4]
+_WORKSPACE = _AGENTIC_PHD_ROOT.parent.parent
+_TOWER_REPO_DEFAULT = _WORKSPACE / "tower-of-babel"
+_SEQUENTIAL_PATH = (
+    _AGENTIC_PHD_ROOT / "phase5-agentic-upgrade" / "sequential-thinking" / "sequential_reasons.py"
+)
+
 
 class TowerBridge:
     """Bridges the agentic-phd runtime to the Tower of Babel proof system.
 
     Usage:
         bridge = TowerBridge()
-        result = await bridge.route_mission(
+        result = bridge.route_mission(
             mission="Integrate Tower of Babel with Aspen Grove Core",
             context={"runtime": "agentic-phd", "tower": "glaciereq/the-tower-of-babel"}
         )
     """
 
     def __init__(self, tower_repo_path: str | None = None, aspen_grove_path: str | None = None):
-        self.tower_repo = tower_repo_path or "/Users/kcbflux/Workspace/tower-of-babel"
+        self.tower_repo = tower_repo_path or str(_TOWER_REPO_DEFAULT)
         self.aspen_grove = aspen_grove_path
         self.sequential = None
         self.initialized = False
+
+    def _load_sequential_reasoner(self):
+        """Load SequentialReasoner from its hyphenated, non-importable directory."""
+        if not _SEQUENTIAL_PATH.exists():
+            raise ImportError(
+                f"Sequential thinking module not found: {_SEQUENTIAL_PATH}"
+            )
+        spec = importlib.util.spec_from_file_location(
+            "agentic_phd_sequential_reasons", _SEQUENTIAL_PATH
+        )
+        if spec is None or spec.loader is None:
+            raise ImportError(f"Cannot load sequential module from: {_SEQUENTIAL_PATH}")
+        mod = importlib.util.module_from_spec(spec)
+        sys.modules.setdefault(spec.name, mod)
+        spec.loader.exec_module(mod)
+        return mod.SequentialReasoner
 
     def initialize(self) -> bool:
         """Verify tower repo is present and sequential module is importable."""
@@ -46,26 +69,8 @@ class TowerBridge:
         if not tower_path.exists():
             raise FileNotFoundError(f"Tower of Babel not found: {self.tower_repo}")
 
-        # Import sequential thinking (agentic-phd module)
-        try:
-            from phase5_agentic_upgrade.sequential_thinking.sequential_reasons import (
-                SequentialReasoner,
-            )
-            self.sequential = SequentialReasoner()
-        except ImportError:
-            # Fallback: construct path manually if the package is not installed
-            agentic_phd = Path(__file__).resolve().parents[3]
-            sys_path = str(agentic_phd)
-            if sys_path not in sys.path:
-                sys.path.insert(0, sys_path)
-            try:
-                from sequential_thinking.sequential_reasons import SequentialReasoner
-                self.sequential = SequentialReasoner()
-            except ImportError as exc:
-                raise ImportError(
-                    f"Could not import sequential_thinking module. "
-                    f"Add {agentic_phd} to PYTHONPATH. Original: {exc}"
-                )
+        sequential_reasoner_cls = self._load_sequential_reasoner()
+        self.sequential = sequential_reasoner_cls()
 
         self.initialized = True
         logger.info("TowerBridge initialized: sequential thinking + tower + aspen-grove ready")

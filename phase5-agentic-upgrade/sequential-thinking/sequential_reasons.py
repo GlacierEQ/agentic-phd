@@ -1,17 +1,17 @@
-# Sequential Thinking — Multi-step reasoning with state tracking, self-verification,
-# and adaptive refinement.
-#
-# Part of: projects/agentic-phd (agentic-phd KCB Flux runtime)
-# Runtime: Kilo agentic framework
+"""Sequential Thinking - Multi-step reasoning with state tracking, self-verification,
+and adaptive refinement.
 
+Part of: projects/agentic-phd (agentic-phd KCB Flux runtime)
+Runtime: Kilo agentic framework
 """
 
 from __future__ import annotations
 
-import hashlib
 import time
+import uuid
 from dataclasses import dataclass, field
 from typing import Any, Dict, List
+
 
 
 @dataclass(frozen=True)
@@ -46,25 +46,28 @@ class SequentialReasoner:
     def __init__(self, max_steps: int = 10, default_confidence: float = 0.8):
         self.max_steps = max_steps
         self.default_confidence = default_confidence
-        self.unique_id = hashlib.uuid4().hex[:12]
+        self.unique_id = uuid.uuid4().hex[:12]
+        self._last_total_steps = 0
 
     def reason(self, problem: str, steps: List[str], context: Dict[str, Any] | None = None) -> SequentialReasoningResult:
         start = time.time()
         state = {"context": context or {}, "carry_forward": None}
         ordered_steps = []
 
-        for i, instruction in enumerate(steps, 1):
+        for i, instruction in enumerate(steps[:self.max_steps], 1):
             step = self._execute_step(i, instruction, state)
             ordered_steps.append(step)
 
             if not step.verified:
-                self._attempt_refinement(i, step, state)
+                step = self._attempt_refinement(i, step, state)
+                ordered_steps[-1] = step
                 if not step.verified:
                     break
 
             state["carry_forward"] = step.output
 
         elapsed = time.time() - start
+        self._last_total_steps = len(ordered_steps)
         return SequentialReasoningResult(
             problem=problem,
             steps=ordered_steps,
@@ -112,12 +115,20 @@ class SequentialReasoner:
             return False
         return True
 
-    def _attempt_refinement(self, step_number: int, step: ThoughtStep, state: Dict[str, Any]):
+    def _attempt_refinement(self, step_number: int, step: ThoughtStep, state: Dict[str, Any]) -> ThoughtStep:
         refined = self._refine_instruction(step.action, state)
-        step.rationale = f"Step {step.step_number} failed initial verification; refined: {refined[:100]}"
-        step.output = self._execute_instruction(refined, state)
-        step.verified = self._verify_step(refined, step.output, state)
-        step.confidence = 0.7 if step.verified else 0.35
+        output = self._execute_instruction(refined, state)
+        verified = self._verify_step(refined, output, state)
+        return ThoughtStep(
+            step_number=step.step_number,
+            action=step.action,
+            rationale=f"Step {step.step_number} failed initial verification; refined: {refined[:100]}",
+            evidence={**step.evidence, "refined_instruction": refined},
+            output=output,
+            verified=verified,
+            confidence=0.7 if verified else 0.35,
+            errors=[] if verified else ["Verification failed"],
+        )
 
     def _refine_instruction(self, instruction: str, state: Dict[str, Any]) -> str:
         obs = state.get("context", {}).get("last_observation", "none")
@@ -128,11 +139,11 @@ class SequentialReasoner:
         return f"{verified}/{len(steps)} steps verified"
 
     def __str__(self) -> str:
-        return f"=== Sequential Reasoning ({self.total_steps} steps) ===" + chr(10)
+        return f"=== Sequential Reasoning ({self._last_total_steps} steps) ===" + chr(10)
 
     @property
     def total_steps(self) -> int:
-        return 0
+        return self._last_total_steps
 
     def __repr__(self) -> str:
         return f"<{self.__class__.__name__} id={self.unique_id}>"
