@@ -26,7 +26,7 @@ _AGENTIC_PHD_ROOT = Path(__file__).resolve().parents[4]
 _WORKSPACE = _AGENTIC_PHD_ROOT.parent.parent
 _TOWER_REPO_DEFAULT = _WORKSPACE / "tower-of-babel"
 _SEQUENTIAL_PATH = (
-    _AGENTIC_PHD_ROOT / "phase5-agentic-upgrade" / "sequential-thinking" / "sequential_reasons.py"
+    _AGENTIC_PHD_ROOT / "phase5_agentic_upgrade" / "sequential_thinking" / "sequential_reasons.py"
 )
 
 

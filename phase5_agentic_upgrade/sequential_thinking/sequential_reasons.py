@@ -5,12 +5,11 @@ Part of: projects/agentic-phd (agentic-phd KCB Flux runtime)
 Runtime: Kilo agentic framework
 """
 
-from __future__ import annotations
 
 import time
 import uuid
 from dataclasses import dataclass, field
-from typing import Any, Dict, List
+from typing import Any, Dict, List, Optional
 
 
 
@@ -49,7 +48,7 @@ class SequentialReasoner:
         self.unique_id = uuid.uuid4().hex[:12]
         self._last_total_steps = 0
 
-    def reason(self, problem: str, steps: List[str], context: Dict[str, Any] | None = None) -> SequentialReasoningResult:
+    def reason(self, problem: str, steps: List[str], context: Optional[Dict[str, Any]] = None) -> SequentialReasoningResult:
         start = time.time()
         state = {"context": context or {}, "carry_forward": None}
         ordered_steps = []
@@ -149,12 +148,12 @@ class SequentialReasoner:
         return f"<{self.__class__.__name__} id={self.unique_id}>"
 
 
-def run_reasoning(problem: str, steps: List[str], context: Dict[str, Any] | None = None, max_steps: int = 10) -> SequentialReasoningResult:
+def run_reasoning(problem: str, steps: List[str], context: Optional[Dict[str, Any]] = None, max_steps: int = 10) -> SequentialReasoningResult:
     reasoner = SequentialReasoner(max_steps=max_steps)
     return reasoner.reason(problem, steps, context)
 
 
-def reason(problem: str, steps: List[str], context: Dict[str, Any] | None = None) -> SequentialReasoningResult:
+def reason(problem: str, steps: List[str], context: Optional[Dict[str, Any]] = None) -> SequentialReasoningResult:
     return run_reasoning(problem, steps, context)
 
 

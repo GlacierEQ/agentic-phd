@@ -13,8 +13,8 @@ import time
 from pathlib import Path
 
 # Resolve layout relative to this file (works wherever the workspace lives):
-# file: .../agentic-phd/phase5-agentic-upgrade/tower-integration/src/tower_integration/integrated_end_to_end.py
-# _HERE.parents[0]=src, parents[1]=tower-integration, parents[2]=phase5-agentic-upgrade,
+# file: .../agentic-phd/phase5_agentic_upgrade/tower-integration/src/tower_integration/integrated_end_to_end.py
+# _HERE.parents[0]=src, parents[1]=tower_integration, parents[2]=phase5_agentic_upgrade,
 # parents[3]=agentic-phd root, parents[4]=projects, parents[5]=Workspace
 _HERE = Path(__file__).resolve().parent
 _TOWER_INTEGRATION_ROOT = _HERE.parents[1]
@@ -22,7 +22,7 @@ _PHASE5_ROOT = _HERE.parents[2]
 _AGENTIC_PHD_ROOT = _HERE.parents[3]
 _WORKSPACE = _HERE.parents[5]
 _TOWER_REPO = _WORKSPACE / "tower-of-babel"
-_SEQUENTIAL_PATH = _PHASE5_ROOT / "sequential-thinking" / "sequential_reasons.py"
+_SEQUENTIAL_PATH = _PHASE5_ROOT / "sequential_thinking" / "sequential_reasons.py"
 _BRIDGE_PATH = _HERE / "bridge.py"
 _ASPEN_PATH = _HERE / "aspen_bridge.py"
 WORKSPACE = _WORKSPACE

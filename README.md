@@ -209,3 +209,26 @@ promote an actual skill; no second Spiral runtime is created here.
 ## License
 
 MIT
+
+---
+
+## Phase 5 — Agentic Upgrade (New)
+
+| Directory | Description |
+|---|---|
+| `sequential-thinking/` | **NEW** — Sequential reasoning engine with state tracking, self-verification, and adaptive refinement |
+| `tower-integration/` | **NEW** — Tower of Babel (GlacierEQ/the-tower-of-babel) integration with Aspen Grove Core for memory/context continuity |
+
+### Tower of Babel Integration
+
+The `tower-integration` module connects the agentic-phd runtime to:
+- **GlacierEQ/the-tower-of-babel** — Multi-language systems engineering platform with 42 technology floors, 84 exhibits, and executable build gates
+- **Aspen Grove Core** — Memory and context-continuity peer per GlacierEQ nervous system architecture
+
+The `TowerBridge` class wires sequential reasoning to the Tower's technology placement and proof system.
+
+**Key files:**
+- `tower-integration/src/tower_integration/bridge.py` — TowerBridge class
+- `tower-integration/src/tower_integration/aspen_bridge.py` — Aspen Grove Bridge
+- `tower-integration/src/tower_integration/integrated_end_to_end.py` — End-to-end integration runner
+- `tower-integration/tests/test_sequential_reasons.py` — Sequential reasoning tests
