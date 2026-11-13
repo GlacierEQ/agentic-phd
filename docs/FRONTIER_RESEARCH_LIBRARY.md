@@ -1,6 +1,6 @@
 # GlacierEQ Agentic PhD — Frontier Research and Technique Library
 
-Updated: 2026-11-05 UTC. Source of truth: [machine-readable research index](../resources/research/frontier_sources.json). **46 curated links across 8 domains**; verified reading of the source is not equivalent to experimentally mastering or deploying its techniques.
+Updated: 2026-11-12 UTC. Source of truth: [machine-readable research index](../resources/research/frontier_sources.json). **52 curated links across 8 domains**; verified reading of the source is not equivalent to experimentally mastering or deploying its techniques.
 
 ## Research method and evidence hierarchy
 
@@ -109,6 +109,14 @@ Updated: 2026-11-05 UTC. Source of truth: [machine-readable research index](../r
   - **Technique:** SDKs, tools, tracing and sandbox workflows.
   - **Experiment:** Compare route success and readback for one real tool task.
 
+- **[T08] [MCP authorization security considerations (2026-07-28)](https://github.com/modelcontextprotocol/modelcontextprotocol/blob/main/docs/specification/2026-07-28/basic/authorization/security-considerations.mdx)** (standard; public source checked 2026-11-12).
+  - **Technique:** Token audience validation and prevention of token passthrough across tools.
+  - **Experiment:** Reject wrong-audience tokens and token passthrough; verify an unauthorized call changes no provider state.
+
+- **[T09] [OpenAI prompt engineering: code-managed prompts and evaluation](https://developers.openai.com/api/docs/guides/prompt-engineering)** (documentation; public source checked 2026-11-12).
+  - **Technique:** Version prompts with typed inputs, representative fixtures and eval-gated rollout.
+  - **Experiment:** Ablate a versioned instruction change on held-out tasks; compare intent fidelity, regressions and measured tool outcomes.
+
 ### Evaluation
 
 - **[E01] [SWE-bench](https://arxiv.org/abs/2310.06770)** (benchmark; public source checked 2026-11-05).
@@ -136,6 +144,18 @@ Updated: 2026-11-05 UTC. Source of truth: [machine-readable research index](../r
   - **Technique:** Estimate a task-completion time horizon from expert-timed tasks and AI success rates.
   - **Experiment:** Measure completion probability over a declared task mix and duration range; report external-validity limits and failures.
 
+- **[E09] [tau-bench: Tool-Agent-User Interaction in Real-World Domains](https://arxiv.org/abs/2406.12045)** (benchmark; public source checked 2026-11-12).
+  - **Technique:** Evaluate tool agents against end-state database goals and repeated-run pass^k reliability.
+  - **Experiment:** Replay matched provider-state tasks five times; compare intended and actual end state, failure classes and repeatability.
+
+- **[E10] [tau2-bench: Evaluating Conversational Agents in a Dual-Control Environment](https://proceedings.mlr.press/v306/barres26a.html)** (benchmark; public source checked 2026-11-12).
+  - **Technique:** Evaluate coordination where user and agent each control tools in a shared environment.
+  - **Experiment:** Compare agent-only against dual-control handoffs, keeping the same terminal goal and measuring missing or duplicated user actions.
+
+- **[E11] [METR Task-Completion Time Horizons, methodology 1.1](https://metr.org/time-horizons/)** (research; public source checked 2026-11-12).
+  - **Technique:** Measure agent completion probability across task durations instead of extrapolating from simple demos.
+  - **Experiment:** Use expert-timed held-out tasks to compare success at multiple horizons with confidence intervals and explicit task-mix limits.
+
 ### Safety and governance
 
 - **[S01] [AgentDojo prompt-injection benchmark](https://arxiv.org/abs/2406.13352)** (benchmark; public source checked 2026-11-05).
@@ -150,6 +170,10 @@ Updated: 2026-11-05 UTC. Source of truth: [machine-readable research index](../r
 - **[S04] [Constitutional AI](https://arxiv.org/abs/2212.08073)** (paper; canonical url requires live recheck).
   - **Technique:** Preference and safety-driven model alignment.
   - **Experiment:** Test self-critique limits against external validation.
+
+- **[S05] [OpenAI: Designing AI agents to resist prompt injection](https://openai.com/index/designing-agents-to-resist-prompt-injection/)** (engineering; public source checked 2026-11-12).
+  - **Technique:** Treat external content as untrusted and constrain the consequences of socially engineered instructions.
+  - **Experiment:** Insert malicious directions into a retrieved email or document; check user-authorized target and zero unauthorized sends or writes.
 
 ### Research practice
 
