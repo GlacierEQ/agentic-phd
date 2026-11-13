@@ -1,6 +1,6 @@
 # GlacierEQ Agentic PhD — Frontier Research and Technique Library
 
-Updated: 2026-11-12 UTC. Source of truth: [machine-readable research index](../resources/research/frontier_sources.json). **52 curated links across 8 domains**; verified reading of the source is not equivalent to experimentally mastering or deploying its techniques.
+Updated: 2026-11-13 UTC. New source-check status labels carry the 2026-11-12 Honolulu local review date (2026-11-13 UTC). Source of truth: [machine-readable research index](../resources/research/frontier_sources.json). **52 curated links across 8 domains**; verified reading of the source is not equivalent to experimentally mastering or deploying its techniques.
 
 ## Research method and evidence hierarchy
 
