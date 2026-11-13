@@ -40,6 +40,12 @@ class ResearchLibraryTests(unittest.TestCase):
     def test_no_unsupported_review_status(self):
         self.check_bad(lambda d: d["sources"][0].update(review_status="peer_reviewed_by_us"))
 
+    def test_future_dated_review_fails(self):
+        self.check_bad(lambda d: d["sources"][0].update(review_status="public_source_checked_2099-01-01"))
+
+    def test_malformed_review_date_fails(self):
+        self.check_bad(lambda d: d["sources"][0].update(review_status="public_source_checked_2026-13-42"))
+
     def test_missing_experiment_fails(self):
         self.check_bad(lambda d: d["sources"][0].update(experiment=""))
 
