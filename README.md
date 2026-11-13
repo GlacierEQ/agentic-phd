@@ -174,7 +174,7 @@ python3.12 labs/agentic/lab_react.py
 ## Frontier Research Library and verified study tools
 
 The [research and technique library](docs/FRONTIER_RESEARCH_LIBRARY.md) curates
-**46 primary/research-grade sources across eight domains**, with method summaries,
+**52 primary/research-grade sources across eight domains**, with method summaries,
 falsifiable experiments, source-review status, and an explicit distinction
 between proposed and completed reproduction. The
 [JSON catalog](resources/research/frontier_sources.json) is the stable,
