@@ -1,6 +1,6 @@
 {
   "schema": "glaciereq.agentic-phd.research-library.v1",
-  "as_of_utc": "2026-11-12",
+  "as_of_utc": "2026-11-13",
   "owner": "GlacierEQ/agentic-phd",
   "purpose": "Research-grade source index and reproducible implementation agenda; the catalog does not assert mastery or reproduced paper results.",
   "provenance_rule": "A source can be read or linked without proof the corresponding method has been implemented. Never promote a proposed lab to passed without runner and outcome evidence.",
