@@ -3,6 +3,7 @@
 from __future__ import annotations
 import json
 import sys
+from datetime import date
 from collections import Counter
 from pathlib import Path
 from urllib.parse import urlparse
@@ -15,6 +16,7 @@ def validate(path: Path = CATALOG) -> dict:
     raw = json.loads(path.read_text(encoding="utf-8"))
     if raw.get("schema") != "glaciereq.agentic-phd.research-library.v1":
         raise ValueError("Unknown library schema")
+    as_of = date.fromisoformat(raw["as_of_utc"])
     entries = raw.get("sources")
     if not isinstance(entries, list) or len(entries) < 30:
         raise ValueError("Research library requires at least 30 sourced items")
@@ -30,8 +32,17 @@ def validate(path: Path = CATALOG) -> dict:
             raise ValueError(f"Untrusted or malformed HTTPS source: {index}")
         if row["id"] in ids or row["url"] in urls:
             raise ValueError(f"Duplicate identity or URL: {index}")
-        if row["review_status"] not in {"public_source_checked_2026-11-05", "canonical_url_requires_live_recheck"}:
-            raise ValueError(f"Invalid provenance status: {index}")
+        status = row["review_status"]
+        if status != "canonical_url_requires_live_recheck":
+            prefix = "public_source_checked_"
+            if not status.startswith(prefix):
+                raise ValueError(f"Invalid provenance status: {index}")
+            try:
+                checked = date.fromisoformat(status[len(prefix):])
+            except ValueError as exc:
+                raise ValueError(f"Invalid provenance date: {index}") from exc
+            if checked > as_of:
+                raise ValueError(f"Review status later than catalog as_of date: {index}")
         if row["implementation_status"] != "proposed_lab_not_run":
             raise ValueError(f"Catalog may not claim unsupported lab execution: {index}")
         ids.add(row["id"]); urls.add(row["url"]); areas[row["area"]] += 1
