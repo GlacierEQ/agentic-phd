@@ -1,6 +1,6 @@
 {
   "schema": "glaciereq.agentic-phd.research-library.v1",
-  "as_of_utc": "2026-11-05",
+  "as_of_utc": "2026-11-12",
   "owner": "GlacierEQ/agentic-phd",
   "purpose": "Research-grade source index and reproducible implementation agenda; the catalog does not assert mastery or reproduced paper results.",
   "provenance_rule": "A source can be read or linked without proof the corresponding method has been implemented. Never promote a proposed lab to passed without runner and outcome evidence.",
@@ -314,6 +314,28 @@
       "implementation_status": "proposed_lab_not_run"
     },
     {
+      "id": "T08",
+      "area": "Tools and runtime",
+      "title": "MCP authorization security considerations (2026-07-28)",
+      "url": "https://github.com/modelcontextprotocol/modelcontextprotocol/blob/main/docs/specification/2026-07-28/basic/authorization/security-considerations.mdx",
+      "type": "standard",
+      "technique": "Token audience validation and prevention of token passthrough across tools",
+      "experiment": "Reject wrong-audience tokens and token passthrough; verify an unauthorized call changes no provider state",
+      "review_status": "public_source_checked_2026-11-12",
+      "implementation_status": "proposed_lab_not_run"
+    },
+    {
+      "id": "T09",
+      "area": "Tools and runtime",
+      "title": "OpenAI prompt engineering: code-managed prompts and evaluation",
+      "url": "https://developers.openai.com/api/docs/guides/prompt-engineering",
+      "type": "documentation",
+      "technique": "Version prompts with typed inputs, representative fixtures and eval-gated rollout",
+      "experiment": "Ablate a versioned instruction change on held-out tasks; compare intent fidelity, regressions and measured tool outcomes",
+      "review_status": "public_source_checked_2026-11-12",
+      "implementation_status": "proposed_lab_not_run"
+    },
+    {
       "id": "E01",
       "area": "Evaluation",
       "title": "SWE-bench",
@@ -402,6 +424,39 @@
       "implementation_status": "proposed_lab_not_run"
     },
     {
+      "id": "E09",
+      "area": "Evaluation",
+      "title": "tau-bench: Tool-Agent-User Interaction in Real-World Domains",
+      "url": "https://arxiv.org/abs/2406.12045",
+      "type": "benchmark",
+      "technique": "Evaluate tool agents against end-state database goals and repeated-run pass^k reliability",
+      "experiment": "Replay matched provider-state tasks five times; compare intended and actual end state, failure classes and repeatability",
+      "review_status": "public_source_checked_2026-11-12",
+      "implementation_status": "proposed_lab_not_run"
+    },
+    {
+      "id": "E10",
+      "area": "Evaluation",
+      "title": "tau2-bench: Evaluating Conversational Agents in a Dual-Control Environment",
+      "url": "https://proceedings.mlr.press/v306/barres26a.html",
+      "type": "benchmark",
+      "technique": "Evaluate coordination where user and agent each control tools in a shared environment",
+      "experiment": "Compare agent-only against dual-control handoffs, keeping the same terminal goal and measuring missing or duplicated user actions",
+      "review_status": "public_source_checked_2026-11-12",
+      "implementation_status": "proposed_lab_not_run"
+    },
+    {
+      "id": "E11",
+      "area": "Evaluation",
+      "title": "METR Task-Completion Time Horizons, methodology 1.1",
+      "url": "https://metr.org/time-horizons/",
+      "type": "research",
+      "technique": "Measure agent completion probability across task durations instead of extrapolating from simple demos",
+      "experiment": "Use expert-timed held-out tasks to compare success at multiple horizons with confidence intervals and explicit task-mix limits",
+      "review_status": "public_source_checked_2026-11-12",
+      "implementation_status": "proposed_lab_not_run"
+    },
+    {
       "id": "S01",
       "area": "Safety and governance",
       "title": "AgentDojo prompt-injection benchmark",
@@ -443,6 +498,17 @@
       "technique": "Preference and safety-driven model alignment",
       "experiment": "Test self-critique limits against external validation",
       "review_status": "canonical_url_requires_live_recheck",
+      "implementation_status": "proposed_lab_not_run"
+    },
+    {
+      "id": "S05",
+      "area": "Safety and governance",
+      "title": "OpenAI: Designing AI agents to resist prompt injection",
+      "url": "https://openai.com/index/designing-agents-to-resist-prompt-injection/",
+      "type": "engineering",
+      "technique": "Treat external content as untrusted and constrain the consequences of socially engineered instructions",
+      "experiment": "Insert malicious directions into a retrieved email or document; check user-authorized target and zero unauthorized sends or writes",
+      "review_status": "public_source_checked_2026-11-12",
       "implementation_status": "proposed_lab_not_run"
     },
     {
