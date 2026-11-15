@@ -11,3 +11,7 @@ For research or implementation work:
 5. Preserve promising ideas and open threads with clear confidence labels. Promote claims to established knowledge only when supported; do not discard exploration merely because it is not yet verified.
 
 Use the [AI evolution keynote briefs](docs/KEYNOTES_AI_EVOLUTION.md) for synthesis and presentation; do not treat a keynote as a substitute for reading the cited paper.
+
+## Task-specific coding intelligence
+
+For nontrivial repository bugs, cross-file behavior changes, concurrency, parser errors, authorization paths and independent patch evaluation, first consult [the imported coding skill](skills/code-intelligence/SKILL.md) and only the relevant part of [its evidence-backed method guide](references/code-intelligence-methods.md). Choose one method explicitly with `python scripts/code_intelligence_router.py select <mode>`, using the [original paper tracker](phase4-research/literature/tracker.py) and source catalog; do not load all research or claim selected guidance was executed. Preserve `GlacierEQ/pro-code` as the executable code owner and `GlacierEQ/spiral-engine` as the original improvement controller. Run independent tests and read back the real target when making capability claims.
