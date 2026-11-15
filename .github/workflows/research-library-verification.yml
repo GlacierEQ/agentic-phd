@@ -4,6 +4,12 @@ on:
   push:
     paths:
       - resources/research/**
+      - skills/code-intelligence/**
+      - references/code-intelligence-methods.md
+      - docs/CODING_INTELLIGENCE_INTEGRATION.md
+      - scripts/code_intelligence_router.py
+      - tests/test_code_intelligence_router.py
+      - README.md
       - docs/FRONTIER_RESEARCH_LIBRARY.md
       - scripts/validate_research_library.py
       - tests/test_research_library.py
@@ -30,6 +36,11 @@ jobs:
       - name: Validate research catalog
         run: |
           python scripts/validate_research_library.py
+      - name: Validate imported coding intelligence and original tracker linkage
+        run: |
+          python scripts/code_intelligence_router.py validate
+          python scripts/code_intelligence_router.py select symbol_refactor > /dev/null
+          python scripts/code_intelligence_router.py select agent_evaluation > /dev/null
       - name: Compile project and run entire test suite
         run: |
           python -m compileall -q phase1-foundations phase2-core-ml phase3-agentic-ai phase4-research phase5-agentic-upgrade labs scripts tests
