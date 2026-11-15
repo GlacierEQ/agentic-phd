@@ -1,6 +1,6 @@
 # GlacierEQ Agentic PhD — Frontier Research and Technique Library
 
-Updated: 2026-11-13 UTC. New source-check status labels carry the 2026-11-12 Honolulu local review date (2026-11-13 UTC). Source of truth: [machine-readable research index](../resources/research/frontier_sources.json). **52 curated links across 8 domains**; verified reading of the source is not equivalent to experimentally mastering or deploying its techniques.
+Updated: 2026-11-13 UTC. New source-check status labels carry the 2026-11-12 Honolulu local review date (2026-11-13 UTC). Source of truth: [machine-readable research index](../resources/research/frontier_sources.json). **61 curated links across 9 domains**; verified reading of the source is not equivalent to experimentally mastering or deploying its techniques.
 
 ## Research method and evidence hierarchy
 
@@ -214,3 +214,34 @@ Report real task-success rate and repeatability (pass@k), artifact/readback inte
 ## Native project integration
 
 Existing project phases: `phase1-foundations/`, `phase2-core-ml/`, `phase3-agentic-ai/`, `phase4-research/`, `phase5-agentic-upgrade/`. Existing paper tracker remains intact. New index has stable IDs for future ingestion and can be queried using `scripts/validate_research_library.py`. Real Spiral ownership stays in private `GlacierEQ/spiral-engine`, not copied or replaced here.
+
+
+## Software engineering intelligence — 2026-11-15 integration
+Applied route method: [coding-intelligence skill](../skills/code-intelligence/SKILL.md) · [execution/research bridge](CODING_INTELLIGENCE_INTEGRATION.md). Primary sources are indexed once in the existing catalog; all new experimental status remains **proposed_lab_not_run**.
+- **[C01] [OpenAI harness engineering](https://openai.com/index/harness-engineering/)** (engineering; canonical URL requires live recheck).
+  - **Technique:** Short, navigable repository instruction maps and tools that let agents act on verifiable state.
+  - **Experiment:** Compare just-in-time entrypoint+contract retrieval versus whole-repository prompt flooding on held-out bugs.
+- **[C02] [Microsoft TypeScript Compiler API](https://github.com/microsoft/TypeScript/wiki/Using-the-Compiler-API)** (documentation; canonical URL requires live recheck).
+  - **Technique:** Compiler-resolved symbol identity, aliases, diagnostics and references rather than name-only matching.
+  - **Experiment:** Safely rename a symbol through imports and aliases without changing a homonymous independent symbol.
+- **[C03] [CodeQL dataflow analysis](https://codeql.github.com/docs/writing-codeql-queries/about-data-flow-analysis/)** (documentation; canonical URL requires live recheck).
+  - **Technique:** Explicit interprocedural dataflow and taint model with modeled sources and sinks.
+  - **Experiment:** Construct input-to-sink query then test cross-tenant denial and inspect false negatives in dynamic paths.
+- **[C04] [Hypothesis stateful testing](https://hypothesis.readthedocs.io/en/latest/stateful.html)** (documentation; canonical URL requires live recheck).
+  - **Technique:** Reference-model property testing that shrinks sequences and retains reproducible counterexamples.
+  - **Experiment:** Generate duplicate/retry/invalid-transition histories and save the smallest failing trace.
+- **[C05] [Google OSS-Fuzz](https://google.github.io/oss-fuzz/)** (documentation; canonical URL requires live recheck).
+  - **Technique:** Coverage-guided fuzzing and sanitizer discovery of parser and native-code crashes.
+  - **Experiment:** Fuzz a malformed-data parser and turn one minimized failure into a regression.
+- **[C06] [MIT 6.5840 Distributed Systems](https://pdos.csail.mit.edu/6.5840/)** (course; canonical URL requires live recheck).
+  - **Technique:** Crash, retry, consensus and durable-state semantics with executable labs.
+  - **Experiment:** Inject crashes before and after durable commit, validate side-effect and receipt consistency.
+- **[C07] [OpenAI coding evaluation audit, July 2026](https://openai.com/index/separating-signal-from-noise-coding-evaluations/)** (engineering; canonical URL requires live recheck).
+  - **Technique:** Evaluate coding tasks for rubric correctness, task validity and evaluator leakage instead of assuming benchmark score is sound.
+  - **Experiment:** Independently regrade clean held-out patches and classify test defects and false successes.
+- **[C08] [OpenAI maintaining software with the GPT-6 family](https://developers.openai.com/blog/maintaining-software-with-the-gpt-6-family)** (engineering; canonical URL requires live recheck).
+  - **Technique:** Use history, runtime experiments, profiling and owners when pruning live flags and dead code.
+  - **Experiment:** Prove apparently dead feature flag has no runtime override or kill-switch consumers before removal.
+- **[C09] [Leslie Lamport TLA+ Specifying Systems](https://lamport.azurewebsites.net/tla/book.html)** (book; canonical URL requires live recheck).
+  - **Technique:** State-transition safety/liveness modeling of concurrent and distributed behavior.
+  - **Experiment:** Model a claim/commit/receipt automation and check retries under crash and lost acknowledgements.

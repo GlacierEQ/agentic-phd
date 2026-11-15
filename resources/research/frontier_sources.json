@@ -1,6 +1,6 @@
 {
   "schema": "glaciereq.agentic-phd.research-library.v1",
-  "as_of_utc": "2026-11-13",
+  "as_of_utc": "2026-11-15",
   "owner": "GlacierEQ/agentic-phd",
   "purpose": "Research-grade source index and reproducible implementation agenda; the catalog does not assert mastery or reproduced paper results.",
   "provenance_rule": "A source can be read or linked without proof the corresponding method has been implemented. Never promote a proposed lab to passed without runner and outcome evidence.",
@@ -575,6 +575,105 @@
       "technique": "Vision-language-action and embodied-reasoning models for robot perception and control",
       "experiment": "Evaluate task success and safe recovery on held-out objects, environments, and embodiments before physical deployment",
       "review_status": "public_source_checked_2026-11-05",
+      "implementation_status": "proposed_lab_not_run"
+    },
+    {
+      "id": "C01",
+      "area": "Software engineering intelligence",
+      "title": "OpenAI harness engineering",
+      "url": "https://openai.com/index/harness-engineering/",
+      "type": "engineering",
+      "technique": "Short, navigable repository instruction maps and tools that let agents act on verifiable state",
+      "experiment": "Compare just-in-time entrypoint+contract retrieval versus whole-repository prompt flooding on held-out bugs",
+      "review_status": "canonical_url_requires_live_recheck",
+      "implementation_status": "proposed_lab_not_run"
+    },
+    {
+      "id": "C02",
+      "area": "Software engineering intelligence",
+      "title": "Microsoft TypeScript Compiler API",
+      "url": "https://github.com/microsoft/TypeScript/wiki/Using-the-Compiler-API",
+      "type": "documentation",
+      "technique": "Compiler-resolved symbol identity, aliases, diagnostics and references rather than name-only matching",
+      "experiment": "Safely rename a symbol through imports and aliases without changing a homonymous independent symbol",
+      "review_status": "canonical_url_requires_live_recheck",
+      "implementation_status": "proposed_lab_not_run"
+    },
+    {
+      "id": "C03",
+      "area": "Software engineering intelligence",
+      "title": "CodeQL dataflow analysis",
+      "url": "https://codeql.github.com/docs/writing-codeql-queries/about-data-flow-analysis/",
+      "type": "documentation",
+      "technique": "Explicit interprocedural dataflow and taint model with modeled sources and sinks",
+      "experiment": "Construct input-to-sink query then test cross-tenant denial and inspect false negatives in dynamic paths",
+      "review_status": "canonical_url_requires_live_recheck",
+      "implementation_status": "proposed_lab_not_run"
+    },
+    {
+      "id": "C04",
+      "area": "Software engineering intelligence",
+      "title": "Hypothesis stateful testing",
+      "url": "https://hypothesis.readthedocs.io/en/latest/stateful.html",
+      "type": "documentation",
+      "technique": "Reference-model property testing that shrinks sequences and retains reproducible counterexamples",
+      "experiment": "Generate duplicate/retry/invalid-transition histories and save the smallest failing trace",
+      "review_status": "canonical_url_requires_live_recheck",
+      "implementation_status": "proposed_lab_not_run"
+    },
+    {
+      "id": "C05",
+      "area": "Software engineering intelligence",
+      "title": "Google OSS-Fuzz",
+      "url": "https://google.github.io/oss-fuzz/",
+      "type": "documentation",
+      "technique": "Coverage-guided fuzzing and sanitizer discovery of parser and native-code crashes",
+      "experiment": "Fuzz a malformed-data parser and turn one minimized failure into a regression",
+      "review_status": "canonical_url_requires_live_recheck",
+      "implementation_status": "proposed_lab_not_run"
+    },
+    {
+      "id": "C06",
+      "area": "Software engineering intelligence",
+      "title": "MIT 6.5840 Distributed Systems",
+      "url": "https://pdos.csail.mit.edu/6.5840/",
+      "type": "course",
+      "technique": "Crash, retry, consensus and durable-state semantics with executable labs",
+      "experiment": "Inject crashes before and after durable commit, validate side-effect and receipt consistency",
+      "review_status": "canonical_url_requires_live_recheck",
+      "implementation_status": "proposed_lab_not_run"
+    },
+    {
+      "id": "C07",
+      "area": "Software engineering intelligence",
+      "title": "OpenAI coding evaluation audit, July 2026",
+      "url": "https://openai.com/index/separating-signal-from-noise-coding-evaluations/",
+      "type": "engineering",
+      "technique": "Evaluate coding tasks for rubric correctness, task validity and evaluator leakage instead of assuming benchmark score is sound",
+      "experiment": "Independently regrade clean held-out patches and classify test defects and false successes",
+      "review_status": "canonical_url_requires_live_recheck",
+      "implementation_status": "proposed_lab_not_run"
+    },
+    {
+      "id": "C08",
+      "area": "Software engineering intelligence",
+      "title": "OpenAI maintaining software with the GPT-6 family",
+      "url": "https://developers.openai.com/blog/maintaining-software-with-the-gpt-6-family",
+      "type": "engineering",
+      "technique": "Use history, runtime experiments, profiling and owners when pruning live flags and dead code",
+      "experiment": "Prove apparently dead feature flag has no runtime override or kill-switch consumers before removal",
+      "review_status": "canonical_url_requires_live_recheck",
+      "implementation_status": "proposed_lab_not_run"
+    },
+    {
+      "id": "C09",
+      "area": "Software engineering intelligence",
+      "title": "Leslie Lamport TLA+ Specifying Systems",
+      "url": "https://lamport.azurewebsites.net/tla/book.html",
+      "type": "book",
+      "technique": "State-transition safety/liveness modeling of concurrent and distributed behavior",
+      "experiment": "Model a claim/commit/receipt automation and check retries under crash and lost acknowledgements",
+      "review_status": "canonical_url_requires_live_recheck",
       "implementation_status": "proposed_lab_not_run"
     }
   ]

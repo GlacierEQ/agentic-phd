@@ -1,0 +1,130 @@
+{
+  "schema": "glaciereq.agentic-phd.code-intelligence.routes.v1",
+  "owner": "GlacierEQ/agentic-phd",
+  "package": {
+    "name": "glaciereq-intelligence-harness",
+    "version": "0.1.35",
+    "release_id": "pluginrel_6af9bbb57d608191b437921e58fee29e",
+    "skill_path": "skills/code-intelligence/SKILL.md",
+    "skill_sha256": "0f92e9b7e5dcd1ee59767708f0dda7c1b5098dc1587416ebe198f5c595bad6ff",
+    "methods_path": "references/code-intelligence-methods.md",
+    "methods_sha256": "d9b72d61b975c5af4707f4a99fc5bf676ceaa4a6dec1bbf83342376b6ae23da4"
+  },
+  "execution_status": "research_method_guidance_only_not_executed",
+  "runtime_owner": "GlacierEQ/pro-code",
+  "research_owner": "GlacierEQ/agentic-phd",
+  "spiral_owner": "GlacierEQ/spiral-engine",
+  "routes": [
+    {
+      "mode": "symbol_refactor",
+      "problem": "Wrong binding, cross-module rename or broken imports",
+      "first_probe": "Resolve compiler declaration identity, aliases, actual references, reverse dependents and generated clients",
+      "owner_tools": [
+        "code:knowledge",
+        "code:inspect",
+        "code:refactor"
+      ],
+      "source_ids": [
+        "C02",
+        "C03"
+      ],
+      "experiment": "Two same-named independent symbols; rename only selected binding through imported aliases",
+      "acceptance": "Compiler has no newly introduced diagnostics; references and behavioral tests preserve unrelated symbol",
+      "risk": "Reflection and nonliteral dynamic imports require separate analysis"
+    },
+    {
+      "mode": "state_receipts",
+      "problem": "An action is reported successful without real side effect or receipt",
+      "first_probe": "Trace request accepted, handler invoked, durable effect, committed receipt and provider readback as separate states",
+      "owner_tools": [
+        "eval:harness"
+      ],
+      "source_ids": [
+        "C06",
+        "C09"
+      ],
+      "experiment": "Crash at every transition and use missing-handler and missing-receipt negative cases",
+      "acceptance": "SUCCEEDED implies a genuine observed effect and corresponding persistent receipt; invalid paths fail closed",
+      "risk": "Local fixture harness ablation is not end-to-end agent evaluation"
+    },
+    {
+      "mode": "concurrent_effect",
+      "problem": "Concurrent or retried requests duplicate a domain effect",
+      "first_probe": "Find linearization point, durable idempotency identity, atomic commit and lost-acknowledgement window",
+      "owner_tools": [
+        "eval:harness"
+      ],
+      "source_ids": [
+        "C06",
+        "C09",
+        "C04"
+      ],
+      "experiment": "Parallel duplicates, conflicting same-key request, restart before and after commit, lost ack",
+      "acceptance": "One domain effect per canonical key under explicit storage assumptions, with conflict and uncertain claims rejected",
+      "risk": "In-process locks and HTTP success cannot prove multi-process exactly-once"
+    },
+    {
+      "mode": "security_flow",
+      "problem": "Untrusted input, privilege or tenant crossing reaches an unauthorized effect",
+      "first_probe": "Identify actor, target, authorization boundary, taint sources/sinks and policy enforcement",
+      "owner_tools": [
+        "code:inspect"
+      ],
+      "source_ids": [
+        "C03",
+        "C05"
+      ],
+      "experiment": "Wrong-account object ID, stale token, replay and source-to-sink path with adversarial payloads",
+      "acceptance": "Unauthorized requests are denied at service and data boundaries without a side effect",
+      "risk": "Static taint model omissions and dynamic calls need live negative tests"
+    },
+    {
+      "mode": "stale_code",
+      "problem": "Code or feature flag appears unused and might be removed",
+      "first_probe": "Review history, runtime configuration, feature overrides, dynamic consumers and emergency kill switches",
+      "owner_tools": [
+        "code:inspect",
+        "code:knowledge"
+      ],
+      "source_ids": [
+        "C08",
+        "C01"
+      ],
+      "experiment": "Probe production-equivalent flag and dynamic paths before and after proposed deletion",
+      "acceptance": "No observed regression across active routes, configurations or rollback path",
+      "risk": "Static zero references alone never establishes dead code"
+    },
+    {
+      "mode": "parser_transform",
+      "problem": "Parser misclassification or transformation changes semantics",
+      "first_probe": "Define valid input/output variants, metamorphic invariants, independent oracle and exact failure seed",
+      "owner_tools": [
+        "code:fix",
+        "code:refactor"
+      ],
+      "source_ids": [
+        "C04",
+        "C05",
+        "C02"
+      ],
+      "experiment": "Generate malformed and equivalent inputs, shrink counterexamples and compare against independent implementation",
+      "acceptance": "Known bad inputs fail correctly; equivalent representations preserve intended behavior; compiler checks pass",
+      "risk": "Passing tests do not imply full semantic equivalence"
+    },
+    {
+      "mode": "agent_evaluation",
+      "problem": "Claimed coding capability increase lacks independent evidence",
+      "first_probe": "Freeze real task and starting SHA, seal grader, audit rubric validity and execution traces",
+      "owner_tools": [
+        "eval:harness"
+      ],
+      "source_ids": [
+        "C07",
+        "C01"
+      ],
+      "experiment": "Blindly reapply generated patches to clean held-out repositories with independent acceptance and regression tests",
+      "acceptance": "Verified functional task success improves under matched tools, budgets and task cohorts with no false positives",
+      "risk": "Current eval:harness only measures local durable-journal behavior, not LLM coding competence"
+    }
+  ]
+}
