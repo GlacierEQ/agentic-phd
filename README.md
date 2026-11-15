@@ -121,6 +121,13 @@ Start with the [Agent Operating Playbook](docs/AGENT_OPERATING_PLAYBOOK.md) for
 an expansive, reusable operating rhythm and the [AI evolution keynote briefs](docs/KEYNOTES_AI_EVOLUTION.md)
 for the research synthesis.
 
+For real code maintenance, use the [source-verified coding-intelligence skill](skills/code-intelligence/SKILL.md)
+and [Phase 5 applied integration](docs/CODING_INTELLIGENCE_INTEGRATION.md). It
+retrieves failure-specific doctoral methods using the **existing** research
+tracker and routes to already implemented `pro-code` tools without inventing
+another coding runtime. Example: `python3.12 scripts/code_intelligence_router.py select symbol_refactor`.
+The seven routes and imported source digests are checked by the repository's CI.
+
 | Module | Focus | Key Capabilities |
 |---|---|---|
 | Coding Reasoning | Code analysis, pattern detection, refactoring | Cyclomatic complexity, code smells, dependency extraction |
@@ -174,7 +181,7 @@ python3.12 labs/agentic/lab_react.py
 ## Frontier Research Library and verified study tools
 
 The [research and technique library](docs/FRONTIER_RESEARCH_LIBRARY.md) curates
-**52 primary/research-grade sources across eight domains**, with method summaries,
+**61 primary/research-grade sources across nine domains**, with method summaries,
 falsifiable experiments, source-review status, and an explicit distinction
 between proposed and completed reproduction. The
 [JSON catalog](resources/research/frontier_sources.json) is the stable,
