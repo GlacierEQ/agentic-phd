@@ -9,7 +9,7 @@ from pathlib import Path
 # so load it by absolute path.
 _REPO_ROOT = Path(__file__).resolve().parents[3]
 _SEQUENTIAL_PATH = (
-    _REPO_ROOT / "phase5-agentic-upgrade" / "sequential-thinking" / "sequential_reasons.py"
+    _REPO_ROOT / "phase5_agentic_upgrade" / "sequential_thinking" / "sequential_reasons.py"
 )
 if not _SEQUENTIAL_PATH.exists():
     raise FileNotFoundError(f"Sequential module not found: {_SEQUENTIAL_PATH}")

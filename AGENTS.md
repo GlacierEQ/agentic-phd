@@ -9,6 +9,7 @@ For research or implementation work:
 3. Keep the user's objective as direction, not as a ceiling on relevant discovery. Bring in broad context, diverse peers, connectors, and tools when they can reveal important connections or increase capability.
 4. For capability claims, compare against a meaningful baseline and test generalization. Report quality, new capability, reliability, regressions, intent fidelity, latency, cost, and uncertainty. A passing test proves the behavior it exercises, not the whole system.
 5. Preserve promising ideas and open threads with clear confidence labels. Promote claims to established knowledge only when supported; do not discard exploration merely because it is not yet verified.
+6. Strength and intelligence strictly outrank speed: default to `deep` / `xhigh` / frontier (`pro` / `inherit`) execution rather than fast or lightweight model shortcuts; never compress reasoning or skip empirical checks (inherits root `/Users/kcbflux/workspace/AGENTS.md` & `RULES.md` Rule 13).
 
 Use the [AI evolution keynote briefs](docs/KEYNOTES_AI_EVOLUTION.md) for synthesis and presentation; do not treat a keynote as a substitute for reading the cited paper.
 
