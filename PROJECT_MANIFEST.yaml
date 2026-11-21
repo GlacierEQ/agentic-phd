@@ -1,0 +1,144 @@
+# Agentic PhD — Portable Project Manifest
+schema: glaciereq.project-manifest.v1
+generated_at: "2026-11-20T06:45:00-10:00"
+source_authority: "estate_owner_graph.json (t_a4098ff2 strategy) + live git readback + DECISIONS.md (2026-11-06 nested repo hygiene, 2026-11-18 legal ratchet sweep)"
+
+project:
+  key: agentic-phd
+  canonical_name: "agentic-phd"
+  canonical_owner: "GlacierEQ/agentic-phd"
+  role: "research_phd"
+  tier: "SubsystemV"
+  purpose: "Agentic PhD research repository — references/code-intelligence-methods.md, nested repo with independent history"
+  operator_intent: "Research repository for agentic methods, code intelligence, PhD-level investigations"
+  runtime_entrypoint: "Unknown (research repo)"
+  target_output: "Research outputs, methods documentation, code intelligence references"
+  operational_users:
+    - "Casey (Operator)"
+    - "Researchers"
+    - "Code intelligence consumers"
+
+identity:
+  local_path: "/Users/kcbflux/workspace/projects/agentic-phd"
+  git_origin: "https://github.com/GlacierEQ/agentic-phd.git"
+  head_branch: "main"
+  head_sha: "2d59a32"  # from estate_owner_graph.md
+  last_commit: "2026-11-18 (measured, after legal ratchet sweep fix)"
+  version: "unknown"
+  commit_count: "unknown"
+  dirty_files: 0
+  branch_count: 1
+  worktrees: []
+  github:
+    visibility: "PRIVATE"
+    is_fork: false
+    is_archived: false
+    default_branch: "main"
+    updated_at: "2026-11-12T16:03:41Z"  # approximate
+    language: "Python"
+    description: ""
+  registry: null
+  nested_repo: true
+  workspace_exclusion: "Excluded from workspace baseline (2026-11-06 nested repo hygiene) — independent history and local changes"
+
+boundaries:
+  files:
+    - "references/code-intelligence-methods.md (GlacierEQ source-backed methods)"
+    - "src/"
+    - "tests/"
+    - "pyproject.toml"
+    - "AGENTS.md"
+    - ".github/"
+  languages:
+    - "Python"
+    - "Markdown"
+  packages: []
+  dependency_interfaces:
+    - "references/code-intelligence-methods.md (referenced in MASTER_HISTORICAL_FUNCTION_RECLAIM.md Reference methods)"
+    - "Microsoft TypeScript Compiler API"
+    - "CodeQL dataflow and taint analysis"
+  services: []
+  secrets_references: []
+  deploy_targets:
+    - "local Mac workstation"
+    - "GitHub (independent repo)"
+  upstream_projects: []
+  downstream_projects:
+    - "villaiage-workspace (excluded from baseline, but referenced)"
+
+lineage:
+  root_source_branch: "main"
+  forks: []
+  history_preserving_renames: []
+  archived_generations: []
+  predecessor_projects: []
+  generated_mirrors: []
+  unique_unmerged_work:
+    - "2026-11-06: Committed as ae571c6 (ahead 1, 16 tests OK) — nested repo hygiene"
+    - "2026-11-18: Fixed test_sequential_reasons.py path → 25 passed (legal ratchet sweep)"
+  all_branches:
+    - "main (HEAD)"
+  remotes:
+    - "origin"
+  ahead_behind: "unknown"
+  unpushed_commits: 0
+  unpulled_commits: 0
+
+state:
+  observed_working_features:
+    - "references/code-intelligence-methods.md (GlacierEQ source-backed methods)"
+    - "Independent nested repo with own history"
+    - "16 tests OK (2026-11-06), 25 passed after test_sequential_reasons.py fix (2026-11-18)"
+    - "Excluded from workspace baseline (independent history)"
+  broken_features: []
+  missing_dependencies: []
+  current_build_status: "operational (25 tests pass)"
+  outstanding_human_decisions: []
+
+separation:
+  case_evidence_excluded: true
+  forensic_records_preserved: true
+  nested_repo: true
+  workspace_baseline_excluded: true
+
+architecture_contracts:
+  - "references/code-intelligence-methods.md (source-backed methods for TypeScript Compiler API, CodeQL)"
+  - "pyproject.toml"
+  - "AGENTS.md"
+  - "tests/ (run-before-reliance, 25 tests)"
+
+handoff:
+  startup_instructions: |
+    1. Check nested repo: `cd /Users/kcbflux/workspace/projects/agentic-phd && git status`
+    2. Run tests: `python -m pytest tests/` (expect 25 passed)
+    3. Review references/code-intelligence-methods.md for methods
+  operator_instructions: |
+    - Role: Research PhD repository — code intelligence methods, agentic research
+    - NESTED REPO — independent history, excluded from workspace baseline (2026-11-06 decision)
+    - Must be reviewed and committed in its own context (not workspace root)
+    - references/code-intelligence-methods.md referenced in MASTER_HISTORICAL_FUNCTION_RECLAIM.md
+    - 25 tests pass after test_sequential_reasons.py path fix (2026-11-18 legal ratchet sweep)
+    - Committed as ae571c6 (ahead 1, 16 tests OK) on 2026-11-06
+    - Clean git state (0 dirty files)
+  dependency_map:
+    imports: []
+    contracts:
+      - "references/code-intelligence-methods.md"
+    entrypoints:
+      - "tests/ (run-before-reliance)"
+  handoff_notes: |
+    - Nested repo: independent history, own remote, excluded from workspace baseline
+    - Code intelligence methods referenced by reclamation engine
+    - Clean state, 25 tests pass
+    - Push when ready (origin ahead 1)
+
+verification_receipts:
+  - "estate_owner_graph.json (t_a4098ff2 strategy) — canonical owner with measured head"
+  - "DECISIONS.md 2026-11-06 — nested repo hygiene, committed ae571c6, 16 tests OK"
+  - "DECISIONS.md 2026-11-18 — legal ratchet sweep, test_sequential_reasons.py fix, 25 passed"
+
+status: "deployed_verified"
+remaining_work:
+  - "Push to origin (ahead 1)"
+  - "Expand research outputs"
+  - "Maintain code-intelligence-methods.md currency"
